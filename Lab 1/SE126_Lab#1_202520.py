@@ -23,9 +23,9 @@ while response == 'y':
     diff = difference(people, maxCap)
 
     if diff >= 0:
-        print(f"{meetingName} is legal. {diff} more people can be added to {meetingName} and still meet fire regulations.")
+        print(f"{meetingName} is legal. {diff} more person(s) can be added to {meetingName} and still meet fire regulations.")
     else:
-        print(f"{meetingName} is illegal. {-diff} people must be removed from {meetingName} to meet fire regulations.")
+        print(f"{meetingName} is illegal. {-diff} person(s) must be removed from {meetingName} to meet fire regulations.")
 
     anotherCheck = input("Do you have another meeting to check? (y/n): ")
     response = decision(anotherCheck)
