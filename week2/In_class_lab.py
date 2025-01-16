@@ -1,10 +1,25 @@
-#W2D2 - Text File Handling Review
+#Elijah Stan
+#1/16/25
+#SE 126.04
+#W2D2 - Text File Handling Review (In class lab)
 
 #PROGRAM PROMPT:
-
+#The csv file classLab2.csv contains a list of rooms, the maximum number of people that the room
+#can accommodate, and the number of people currently registered for the event. Write a program that
+#displays all rooms that are over the maximum limit of people and the number of people that have to
+#be notified that they will have to be put on the wait list. After the file is completely processed the
+#program should display the number of records processed and the number of rooms that are over the
+#limit.
 
 #VARIABLE DICTIONARY:
-
+#difference: function that subtracts current people in the room fromm max amount of people
+#diff: returned value from difference function
+#totalRec: total records in file
+#roomsOver: amount of rooms that have more than capacity
+#maxCap/max: most amount of people in a room at any point in time
+#people/ppl: amount of persons in a room
+#remaining: the amount of people needed to be removed to meet the capacity of the room
+#name: name of the room
 
 #--IMPORTS------------------------------------------------------------
 import csv
