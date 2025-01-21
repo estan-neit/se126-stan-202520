@@ -56,7 +56,7 @@ with open("textFile/filehandling.csv") as csvfile:
         numDisk = (rec[5])
 
         if numDisk == 1:
-            HDD1Size = "---"
+            HDD2Size = "---"
             os = rec[6]
             year = rec[7]
         else:
