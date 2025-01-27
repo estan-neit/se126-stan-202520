@@ -1,5 +1,9 @@
 #W4D1 - Sequential Search
 
+#Elijah Stan
+#1/27/2025
+#SE126.04
+
 #PROGRAM PROMPT: We will continue to work with the class_grades.csv file, as used in the W3D2 demo. We will practice connecting to a file, storing the file data into parallel lists, and creating new data for each student record based on these lists. We will then build a sequential search program which will allow us to find students in the file, and write data regarding them to a newly created file in our repository.
 
 #--IMPORTS------------------------------------------------------------
