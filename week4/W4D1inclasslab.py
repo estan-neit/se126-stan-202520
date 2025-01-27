@@ -10,6 +10,7 @@
 import csv
 #--FUNCTIONS----------------------------------------------------------
 def letter(num):
+    #num: numeric grade
     if num >= 90:
         let = "A"
     elif num >= 80:
@@ -27,10 +28,15 @@ def letter(num):
 
 #create some empty lists - one list for every potential field in the file
 firstName = []
+#firstName: list of all first names in the file
 lastName = []
+#lastName: list of all last names in the file
 test1 = []
+#test1: list of all test1 scores in the file
 test2 = []
+#test2: list of all test2 scores in the file
 test3 = []
+#test3: list of all test3 scores in the file
 
 #-----connected to file-------------------------
 with open("textFile/class_grades.csv") as csvfile:
@@ -71,16 +77,18 @@ print(f"TOTAL STUDENTS IN FILE: {len(firstName)}")
 print("Welcome to the stuident search system")
 answer = input("Would you like to start your search? (y/n): ")
 while answer == "y":
+    #answer: user's choice to start search system
     print("\t~Search Menu~")
     print("1. Search by last name")
     print("2. Search by first name")
     print("3. Search by letter grade")
     print("4. Exit search system")
     searchType = input("Enter your search type [1-4]: ")
+    #searchType: user's choice of search type
 
     if searchType == "1":
         found = -1 #flag var, will be replaced with index position if name is found
-        searchLast = input("Enter the last name you wish to find: ") #name we are looking for
+        searchLast = input("Enter the last name you wish to find: ") #last name we are looking for
 
         #step 2: perform search algo (seq. search -> for loop w/ if statement)
         for i in range(0, len(lastName)):
@@ -102,7 +110,7 @@ while answer == "y":
 
     elif searchType == "2":
         found = -1 #flag var, will be replaced with index position if name is found
-        searchFirst = input("Enter the first name you wish to find: ") #name we are looking for
+        searchFirst = input("Enter the first name you wish to find: ") #first name we are looking for
 
         #step 2: perform search algo (seq. search -> for loop w/ if statement)
         for i in range(0, len(firstName)):
@@ -154,5 +162,4 @@ while answer == "y":
     else:
         print("ERROR: Invalid search type. Please try again.")
         
-
 print("Thank you for using the student search system. Goodbye!")
