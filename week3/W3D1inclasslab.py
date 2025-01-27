@@ -89,3 +89,14 @@ print(f"\nTotal records in file: {len(compType)}\n\nThank you for using this pro
 for i in range(0,  len(compType)):
     print(f"{compType[i]:10}   {brand[i]:10}   {processor[i]:10}   {ramGB[i]:5}  {HDD1Size[i]:8} {numDisk[i]:5}       {HDD2Size[i]:10}  {OS[i]:7}    {year[i]:2}")
 
+oldDesk = 0    #from 2016 or earlier
+oldLap = 0    #from 2016 or earlier
+
+for i in range(0, len(year)):
+    if year[i] <= 2016:
+        if compType[i] == "Desktop":
+            oldDesk += 1
+        else:
+            oldLap += 1
+
+print("Total no. of desktops that need to be replaced: {oldDesk}")
