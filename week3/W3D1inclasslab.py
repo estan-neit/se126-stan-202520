@@ -12,19 +12,29 @@
 import csv
 #--MAIN EXECUTING CODE------------------------------------------------
 compType = []
+#type of computer (Desktop or Laptop)
 brand = []
+#brand of computer (Dell, Gateway, HP)
 processor = []
+#processor type
 ramGB = []
+#ram in GB
 HDD1Size = []
+#size of HDD1
 HDD2Size = []
+#size of HDD2
 numDisk = []
+#number of disks
 OS = []
+#type of OS
 year = []
+#year of manufacture
 
 
 #-----connected to file-------------------------
 
 totalRec = 0
+#total number of records in the file
 
 with open("textFile/filehandling.csv") as csvfile:
     #indent one level while connected to the file
