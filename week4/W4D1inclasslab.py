@@ -74,7 +74,7 @@ print("-------------------------------------------------------------------------
 print(f"TOTAL STUDENTS IN FILE: {len(firstName)}")
 
 #Sequential Search - search for a student by their LAST name
-print("Welcome to the stuident search system")
+print("Welcome to the student search system")
 answer = input("Would you like to start your search? (y/n): ")
 while answer == "y":
     #answer: user's choice to start search system
