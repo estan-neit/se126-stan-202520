@@ -1,3 +1,6 @@
+#SE126.09
+#Elijah Stan
+#2/10/2025
 #Program Prompt: Using the file named above, read the data from the file and store to 1D parallel lists. Once the lists have been fully populated with file data, create a new list to hold an office number for each of the employees.Office numbers should start at 100 and not exceed 200. Assign each employee an office number and store to the newly created list, then process through the six lists to display all of the data to the user as well as the total number of records in the file. Once all of the data has been displayed, write all of the list data to a new file called ‘midterm_choice1.csv’, where each employee’s information is found on one record in the file and their data is separated by a comma (additional empty line in resulting file is okay). Finally, create a sequential search program that allows a user to repeatedly search the employee information stored in the lists based on the following menu:
 #Westeros Services Directory Search
 #1. Search by EMAIL
@@ -52,6 +55,7 @@ def phoneExt(houseAllegiance, usedExts):
         return "ERROR"
 
 def officeNum(firstName):
+    #officeNum: employee's office number
     if firstName == "Eddard":
         return 100
     elif firstName == "Benjen":
@@ -107,6 +111,7 @@ department = []
 phoneExtension = []
 #phoneExtension: phone extensions used by characters
 officeNumber = []
+#officeNumber: office number of employee
 
 # Track used phone extensions
 usedExtensions = set()
