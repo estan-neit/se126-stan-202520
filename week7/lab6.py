@@ -1,195 +1,85 @@
-import csv
+# Elijah Stan
+# 2/26/2025
+# SE126.04
+# Lab 6 - Collections and Logic
+# PROGRAM PROMPT: For Lab #6, you must use lists to create the airplane seating chart - either 1D or 2D lists. You may either create a file to read the data in for the seats, or you can hand-populate your own 1/2D lists. If you choose to create your own file, please upload along with your completed Lab #6 .py file. After displaying the seats available, the program prompts for the seat desired, the user types in a seat and then the display of available seats is updated. This continues until all seats are filled or until the user signals that the program should end. If a user types in a seat that is already assigned, the program should say that the seat is occupied and ask for another choice.
 
-#--FUNCTIONS-----------------------------------------------------------------------------
-def display(x, records):
+#--FUNCTIONS---------------------------------------------------------------------------
+def show():
+    # This function displays the seating chart
+    for i in range(len(sA)):
+        print(f"{i + 1} {sA[i]} {sB[i]} {sC[i]} {sD[i]}")
 
-    print(f"{'CLASS':8}  {'NAME':10}  {'MEANING':25}  {'CULTURE'}")
-    print("----------------------------------------------------------------")
-    if x != "x":
-        #printing one record
-        print(f"{classType[x]:8}  {name[x]:10}  {meaning[x]:25}  {culture[x]}")
-
-    elif found:
-        #printing multiples, based on length stored in 'foundList'
-        for i in range(0, records):
-            print(f"{classType[found[i]]:8}  {name[found[i]]:10}  {meaning[found[i]]:25}  {culture[found[i]]}") 
+def answer(ans):
+    # This function checks the answer for validity and returns the answer to the main code
+    while ans != "y" and ans != "n":
+        print("***INVALID ENTRY!***")
+        ans = input("Would you like to enter the search program? [y/n]").lower()
     
-    else:
-        #printing full data, based on length stored in 'records'
-        for i in range(0, records):
-            print(f"{classType[i]:8}  {name[i]:10}  {meaning[i]:25}  {culture[i]}")
-
-    print("----------------------------------------------------------------\n")
-
-
-def swap(i, listName):
-    temp = listName[i]
-    listName[i] = listName[i + 1]
-    listName[i + 1] = temp
     
+    return ans #this value will replace the function call in the main code
 
-def seqSearch(search,listName):
-    for i in range(0, len(listName)):
-        if search.lower() in listName[i].lower():
-            found.append(i)
-#--MAIN EXECUTING CODE-------------------------------------------------------------------
-row = []
-lW = []
-lA = []
-rA = []
-rW = []
+#--MAIN EXECUTING CODE-----------------------------------------------------------------
 
-planeSeatingChart = [
-    ["1", "A", "B", "C", "D"],
-    ["2", "A", "B", "C", "D"],
-    ["3", "A", "B", "C", "D"],
-    ["4", "A", "B", "C", "D"],
-    ["5", "A", "B", "C", "D"],
-    ["6", "A", "B", "C", "D"],
-    ["7", "A", "B", "C", "D"]
-]
+sA = ["A", "A", "A", "A", "A", "A", "A"]
+# sA = seat a in each row
+sB = ["B", "B", "B", "B", "B", "B", "B"]
+# sB = seat b in each row
+sC = ["C", "C", "C", "C", "C", "C", "C"]
+# sC = seat c in each row
+sD = ["D", "D", "D", "D", "D", "D", "D"]
+# sD = seat d in each row
 
-with open("collectionsAndLogic.csv", "w", newline="") as csvfile:
-    writer = csv.writer(csvfile)
-    writer.writerows(planeSeatingChart)
-    for i in range(len(row)):
-        if i < len(row) - 1:
-            writer.writerow([row[i], lW[i], lA[i], rA[i], rW[i]])
-        else:
-            csvfile.write(f"{row[i]},{lW[i]},{lA[i]},{rA[i]},{rW[i]}")
+# Disconnected from file
 
-#disconnected from file------------------------------------
+ans = input("Would you like to enter the search program? [ y / n ]").lower()
 
-#display whole list data to user
-#display("x",len(classType)) #practice with function
+print(f"\tBook your plane seat here.")
+print("==========================================")
 
-#display one row data to user
-#display(0, len(classType)) #practice with function
+ans = "y"
 
-#display one row of data from the file
-#display(16, len(name))
-
-ans = input("Would you like to enter the search program? [y/n]").lower()
-
-#validity and user error trap loop
-while ans != "y" and ans != "n":
-    print("***INVALID ENTRY!***")
-    ans = input("Would you like to enter the search program? [y/n]").lower()
-
-#main searching loop
+# Seat booking section
 while ans == "y":
-    found = [] #reset found list so each new menu/search it is empty
+    show()
+    row = int(input("Enter row [1-7]: "))
+    seat = input("Enter seat type A, B, C or D: ").upper()
 
-    print("\tSEARCHING MENU")
-    print("1. Search by TYPE") #shows all of either elf or dragon
-    print("2. Search by NAME") #binary search review
-    print("3. Search by MEANING") #find part of a whole
-    print("4. EXIT")
-
-    searchType = input("\nHow would you like to search today? [1-4]: ")
-
-    #using 'not in' for user validity checks
-    if searchType not in ["1", "2", "3", "4"]:
-         print("***INVALID ENTRY!***\nPlease try again")
-    
-    elif searchType == "1":
-        print(f"\nYou have chosen to search by TYPE")
-        
-        
-        #allow the user to search for a certain TYPE and then display ALL records (multi) with that type
-        search = input("Which type: 'dragon' or 'elf':")
-
-        #show all values in classType of either dragon or elf --> sequential search!
-        if search.lower() not in ["dragon", "elf"]:
-            print("Sorry, only 'dragon' or 'elf' are accepted. Please try again.")
-
+    if seat.upper() == "A":
+        if sA[row - 1] != "X":
+            sA[row - 1] = "X"
         else:
-            #SEQUENTIAL SEARCH for MULTIPLE VALUES MATCHING SEARCH TERM
-            
-            for i in range(0, len(classType)):
-                if search.lower() == classType[i].lower():
-                    found.append(i) #add current index (location) of found item to 'found' list
-            #display results
-            if not found: #if the found list is still empty
-                print(f"Sorry your search for {search} came up empty.")
-            else:
-                #call display() to show the values
-                display("x", len(found))
+            sA[row -1] = "X"
+            print(f"Seat {row}{seat.upper()} is taken. Please choose another seat.")
 
-    elif searchType == "2":
-        print(f"\nYou have chosen to search by NAME")
-
-
-        #allow the user to search for ONE specific and unique name value (binary search!)
-        search = input("Enter the NAME you are looking for: ")
-        #BINARY SEARCH: 
-        #               * requires a collection of UNIQUE values to search through
-        #               * requires the collection to be SORTED (ORDERED)
-        #                       ascending or descending ; alpha or numeric
-
-
-
-        #BUBBLE SORT--> higher values 'bubble' to the bottom of the collection
-        for i in range(0, len (name) - 1):
-            for j in range(0, len(name) - 1):
-                if name[j] > name[j + 1]:
-                    #they must swap places because the higher value must come afterwards
-                    temp = name[j]
-                    name[j] = name[j + 1]
-                    name[j + 1] = temp
-
-                    #use the function to cut down on coding and potential errors!
-                    swap(j, classType)
-                    swap(j, meaning)
-                    swap(j, culture)
-
-
-        #check our bubble sort -- sorting in ascending order by name
-        display("x", len(name))
-
-        #BINARY SEARCH: must be performed on ordered/sorted lists populated with unique values - can only find ONE item or value
-
-        min = 0                         #lowest possiblen index
-        max = len(name) - 1             #highest index
-        mid = int((min + max) / 2)      #middle index in sorted list
-
-        while min < max and search.lower() != name[mid].lower():
-            #while above is true, list is not yet exhausted and we haven't found what we are looking for so, must go through another searching iteration!
-            if search.lower() < name[mid].lower():
-                max = mid - 1
-            else:
-                #search > name[mid]
-                min = mid + 1
-            mid = int((min + max) / 2) 
-
-        if search.lower() == name[mid].lower():
-            print(f"Huzzah! We have found your search for {search}, see details below:")
-            display(mid, len(name))
+    elif seat.upper() == "B":
+        if sB[row - 1] != "X":
+            sB[row - 1] = "X"
         else:
-            print(f"Sorry, we could not find your seach for {search}. Please try again.")
+            sB[row -1] = "X"
+            print(f"Seat {row}{seat.upper()} is taken. Please choose another seat.")
 
-        
-    elif searchType == "3":
-        print(f"\nYou have chosen to search by MEANING")
-
-        search = input("Enter the meaning seach term you are looking for: ").lower()
-
-
-        for i in range(0, len(meaning)):
-            if search.lower() in meaning[i].lower():
-                found.append(i)
-
-        if not found:
-            print(f"Sorry, we could not find your seach for {search}. Please try again.")
+    elif seat.upper() == "C":
+        if sC[row - 1] != "X":
+            sC[row - 1] = "X"
         else:
-            print(f"Huzzah! We have found your search for {search}, see details below:")
-            display("x", len(found))
+            sC[row -1] = "X"
+            print(f"Seat {row}{seat.upper()} is taken. Please choose another seat.")
 
-        
-    elif searchType == "4":
+    elif seat.upper() == "D":
+        if sD[row - 1] != "X":
+            sD[row - 1] = "X"
+        else:
+            sD[row -1] = "X"
+            print(f"Seat {row}{seat.upper()} is taken. Please choose another seat.")
 
-        print(f"\nYou have chosen to EXIT")
-        ans = "N"
+    else:
+        print(f"This seat either does not exist or was not entered correctly. Please try again.")
 
-#alert user that program is about to end
-print("Thank you for using my program, goodbye!\n")
+    ans = input("Is there another seat you wish to book? [ y / n ]: ").lower()
+
+    answer(ans)
+
+print("Thank you for booking your flight with us.")
+
+show()
