@@ -21,6 +21,7 @@ def display(x, records):
 
     print("----------------------------------------------------------------\n")
 
+
 def swap(i, listName):
     temp = listName[i]
     listName[i] = listName[i + 1]
