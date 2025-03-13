@@ -39,7 +39,7 @@ test3 = []
 #test3: list of all test3 scores in the file
 
 #-----connected to file-------------------------
-with open("textFile/class_grades.csv") as csvfile:
+with open("textFiles/class_grades.csv") as csvfile:
     #indent one level while connected to the file
     file = csv.reader(csvfile)
 

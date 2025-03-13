@@ -15,7 +15,7 @@ counts = []     #field2* - 1 or 2, count of colors
 color1 = []     #first primary color
 color2 = []     #second color, only when count is 2
 
-with open("textFile/dragons.csv") as csvfile:
+with open("textFiles/dragons.csv") as csvfile:
     file = csv.reader(csvfile)
 
     for rec in file:

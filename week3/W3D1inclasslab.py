@@ -36,7 +36,7 @@ year = []
 totalRec = 0
 #total number of records in the file
 
-with open("textFile/filehandling.csv") as csvfile:
+with open("textFiles/filehandling.csv") as csvfile:
     #indent one level while connected to the file
 
     file = csv.reader(csvfile)
